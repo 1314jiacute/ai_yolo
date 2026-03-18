@@ -1,0 +1,64 @@
+{
+    "模型名称": "YOLOv8m + CBAM (大目标害虫检测专用)",
+    "训练轮数": 70,
+    "训练时间(h)": 0.41,
+    "参数信息": {
+        "总参数(M)": 25.87,
+        "可训练参数(M)": 0.0
+    },
+    "模型体积(MB)": 49.62,
+    "核心评估指标": {
+        "mAP50": 0.7913,
+        "mAP50-95": 0.5174,
+        "平均精度(MP)": 0.7752,
+        "平均召回(MR)": 0.776,
+        "F1分数": 0.774,
+        "平均置信度": 0.764
+    },
+    "推理性能": {
+        "平均推理时间(ms)": 24.13,
+        "FPS": 41.45
+    },
+    "基础超参数配置": {
+        "初始学习率": 0.0001,
+        "批次大小": 16,
+        "图像尺寸": 640,
+        "置信度阈值": 0.3,
+        "IOU阈值": 0.5,
+        "当前学习率": 2.4142857142857093e-06
+    },
+    "大目标优化配置": {
+        "enabled": true,
+        "large_obj_threshold": 0.3,
+        "box_loss_weight": 5.0,
+        "cls_loss_weight": 0.7,
+        "iou_loss_type": "CIoU",
+        "conf_penalty": 0.1
+    },
+    "创新性优化配置": {
+        "CBAM注意力": "开启",
+        "自适应学习率": {
+            "enabled": true,
+            "lr_patience": 6,
+            "lr_decay_rate": 0.75,
+            "min_lr": 1e-06,
+            "monitor_metric": "mAP50"
+        },
+        "类别平衡采样": {
+            "enabled": true,
+            "alpha": 0.2,
+            "min_samples": 0
+        },
+        "知识蒸馏": {
+            "enabled": true,
+            "teacher_model": "yolov8x.pt",
+            "distill_weight": 0.25,
+            "temperature": 2.5
+        }
+    },
+    "续训信息": {
+        "是否续训": true,
+        "续训权重路径": "/workspace/examples/PythonProject1/pest_experiment_results_yolov8m_cbam/yolov8m_cbam_large_obj/weights/last.pt",
+        "续训起始Epoch": "自动识别"
+    }
+}

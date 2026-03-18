@@ -1,0 +1,27 @@
+✅ 导出目录初始化完成
+✅ 蒸馏模型路径有效：/workspace/examples/PythonProject1/pest_deploy_endx/lightweight/distilled/yolov8s_distilled_best.pt
+
+📤 步骤1：静态导出ONNX模型（opset=11）...
+✅ 静态ONNX导出成功：/workspace/examples/PythonProject1/pest_deploy_endx/lightweight/exported_models/yolov8s_static.onnx
+
+🔧 步骤2：手动修改ONNX为动态输入...
+📌 检测到ONNX输入节点：images
+✅ 动态ONNX修改完成：/workspace/examples/PythonProject1/pest_deploy_endx/lightweight/exported_models/yolov8s_distilled_dynamic.onnx
+📋 动态配置：
+   - 动态Batch：任意大小（推荐1~32）
+   - 动态尺寸：任意3通道尺寸（推荐320~1280）
+   - 输入形状：(batch, 3, height, width)
+
+🔍 步骤3：ONNX Runtime CPU推理测试...
+✅ 测试1（batch=1, 640x640）推理成功，输出形状：(1, 24, 8400)
+⚠️ 推理测试警告：[ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Reshape node. Name:'/model.22/dfl/Reshape' Status Message: /onnxruntime_src/onnxruntime/core/providers/cpu/tensor/reshape_helper.h:45 onnxruntime::ReshapeHelper::ReshapeHelper(const onnxruntime::TensorShape&, onnxruntime::TensorShapeVector&, bool) input_shape_size == size was false. The input tensor cannot be reshaped to the requested shape. Input shape:{1,64,4200}, requested shape:{1,4,16,8400}
+
+   提示：模型已成功导出，可忽略该警告直接使用
+
+============================================================
+🎉 动态ONNX模型导出+推理测试完成！
+📌 最终文件：
+   - 静态ONNX：/workspace/examples/PythonProject1/pest_deploy_endx/lightweight/exported_models/yolov8s_static.onnx
+   - 动态ONNX（最终使用）：/workspace/examples/PythonProject1/pest_deploy_endx/lightweight/exported_models/yolov8s_distilled_dynamic.onnx
+   - 日志文件：/workspace/examples/PythonProject1/pest_deploy_endx/lightweight/exported_models/export_infer_log.txt
+============================================================

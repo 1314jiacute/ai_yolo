@@ -1,0 +1,15 @@
+==================================================
+YOLOv8 蒸馏脚本（强制40轮）
+==================================================
+教师模型：/workspace/examples/PythonProject1/pest_deploy/lightweight/pruned/yolov8m_pruned.pt
+数据集：/workspace/examples/PythonProject1/data_dectect_t2/data.yaml
+保存路径：/workspace/examples/PythonProject1/pest_deploy/lightweight/distilled
+训练轮数：40 | 批次：16 | 尺寸：640
+设备：0
+生成强制配置文件：/workspace/examples/PythonProject1/pest_deploy/lightweight/distilled/distill_config.yaml
+
+开始蒸馏训练（强制40轮，命令行模式）
+--------------------------------------------------
+执行命令：yolo detect train cfg=/workspace/examples/PythonProject1/pest_deploy/lightweight/distilled/distill_config.yaml device=0 project=/workspace/examples/PythonProject1/pest_deploy/lightweight/distilled name=train exist_ok=True
+
+训练完成，整理模型文件...
